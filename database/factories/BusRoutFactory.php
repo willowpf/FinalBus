@@ -19,10 +19,10 @@ class BusRoutFactory extends Factory
         return [
             
                 'bus_id' => $this->faker->randomNumber(4), // Random 3-digit number for bus ID
-                'bus_make' => $this->faker->company(), // Random company name for bus make
-                'arrival_time' => $this->faker->time('H:i'), // Random arrival time (e.g., 14:30)
-                'departure_time' => $this->faker->time('H:i'), // Random departure time
-                'destination' => $this->faker->city(), // Random city name for destination
+            'bus_make' => $this->faker->randomElement(['Mercedes', 'Isuzu', 'Howo', 'Volvo']), // Random bus manufacturer from specified list
+            'arrival_time' => $this->faker->time('H:i'), // Random arrival time (e.g., 14:30)
+            'departure_time' => $this->faker->time('H:i'), // Random departure time
+            'destination' => $this->faker->randomElement(['Terminal', 'UCLM']), // Random city name for destination
         ];
     }
 }

@@ -2,6 +2,7 @@
 use App\Livewire\Buss\Index;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Buss\Team;
 
 
 
@@ -19,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/buss', Index::class)->name('buss.index');
-
+    Route::get('/team', Team::class)->name('team');
 });
 
 require __DIR__.'/auth.php';
