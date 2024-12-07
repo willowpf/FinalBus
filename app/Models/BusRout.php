@@ -13,8 +13,8 @@ class BusRout extends Model
     protected $fillable = [
         'bus_id',
         'bus_make',
-        'arrival time',
-        'departure time',
+        'arrival_time',
+        'departure_time',
         'destination'
     ];
 
