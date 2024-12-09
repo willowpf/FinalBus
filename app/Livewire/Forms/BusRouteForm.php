@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Forms;
 
-use Livewire\Attributes\Validate;
+use App\Models\BusRout;
 use Livewire\Form;
 
 class BusRouteForm extends Form
@@ -13,25 +13,23 @@ class BusRouteForm extends Form
     public $departure_time;
     public $destination;
 
+    public function setBusRout(BusRout $busRout)
+    {
+        $this->bus_id = $busRout->bus_id;
+        $this->bus_make = $busRout->bus_make;
+        $this->arrival_time = $busRout->arrival_time;
+        $this->departure_time = $busRout->departure_time;
+        $this->destination = $busRout->destination;
+    }
+
     public function rules()
     {
         return [
+            'bus_id' => 'required|integer',
+            'bus_make' => 'required|string|max:255',
             'arrival_time' => 'required|date_format:H:i',
             'departure_time' => 'required|date_format:H:i|after:arrival_time',
             'destination' => 'required|in:Terminal,UCLM',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'arrival_time.required' => 'The arrival time is required.',
-            'arrival_time.date_format' => 'The arrival time must be in the format HH:MM.',
-            'departure_time.required' => 'The departure time is required.',
-            'departure_time.date_format' => 'The departure time must be in the format HH:MM.',
-            'departure_time.after' => 'The departure time must be after the arrival time.',
-            'destination.required' => 'The destination field is required.',
-            'destination.in' => 'The destination must be either Terminal or UCLM.',
         ];
     }
 }

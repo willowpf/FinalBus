@@ -10,6 +10,8 @@ class BusRout extends Model
     /** @use HasFactory<\Database\Factories\BusRoutFactory> */
     use HasFactory;
 
+
+    protected $table = 'bus_routs';
     protected $fillable = [
         'bus_id',
         'bus_make',
