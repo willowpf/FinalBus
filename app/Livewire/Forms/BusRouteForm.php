@@ -25,7 +25,7 @@ class BusRouteForm extends Form
     public function rules()
     {
         return [
-            'bus_id' => 'required|integer',
+            'bus_id' => 'required|string',
             'bus_make' => 'required|string|max:255',
             'arrival_time' => 'required|date_format:H:i',
             'departure_time' => 'required|date_format:H:i|after:arrival_time',

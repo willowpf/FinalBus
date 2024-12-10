@@ -17,7 +17,7 @@ class Edit extends Component
         $this->busRoute = $busRoute;
 
         // Initialize the form
-       
+        $this->form = new BusRouteForm($this, 'form');
         $this->form->setBusRout($this->busRoute);
 
         $this->destinations = ['Terminal', 'UCLM'];
@@ -32,9 +32,9 @@ class Edit extends Component
 
     public function updateBusRoute()
     {
-        $this->validate();
-
         
+        $this->validate();
+       
         $this->busRoute->update([
             'bus_id' => $this->form->bus_id,
             'bus_make' => $this->form->bus_make,
@@ -42,7 +42,7 @@ class Edit extends Component
             'departure_time' => $this->form->departure_time,
             'destination' => $this->form->destination,
         ]);
-        
+
         flash()->success('Bus route updated successfully');
 
         return $this->redirect(Index::class, navigate: true);

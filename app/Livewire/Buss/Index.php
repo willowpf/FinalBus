@@ -6,13 +6,24 @@ use App\Models\BusRout;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use Illuminate\Database\Eloquent\Builder;
+
+
 class Index extends Component
 {
     use WithPagination, WithoutUrlPagination;
+
+    public $search;
+
     public function render()
     {
         
-        $busRoutes = BusRout::paginate(10); 
+        $query = BusRout::query();
+        $query = $this->applySearch($query);
+        return view('livewire.buss.index', [
+            
+            'busRoutes' => $query->paginate(10)
+        ]);
         
 
         
@@ -22,4 +33,10 @@ class Index extends Component
     {
         $busRoute->delete();
     }
+    
+    public function applySearch(Builder $query)
+    {
+        return $query->where('destination', 'like', '%' . $this->search . '%');
+    }
+
 }
