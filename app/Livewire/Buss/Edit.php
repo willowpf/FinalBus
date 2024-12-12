@@ -12,12 +12,12 @@ class Edit extends Component
     public BusRouteForm $form;
     public $destinations = [];
 
-    public function mount(BusRout $busRoute)
+    public function mount(BusRout $busRout)
     {
-        $this->busRoute = $busRoute;
-
+        $this->busRoute = $busRout;
+        // dd($this->busRoute);
         // Initialize the form
-        $this->form = new BusRouteForm($this, 'form');
+        // $this->form = new BusRouteForm($this, 'form');
         $this->form->setBusRout($this->busRoute);
 
         $this->destinations = ['Terminal', 'UCLM'];
